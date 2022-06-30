@@ -1,3 +1,4 @@
 test_data/
 test.py
 __pycache__
+*.csv
