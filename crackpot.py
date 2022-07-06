@@ -62,7 +62,9 @@ def main(args):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description="./crackpot.py <domainUsers.grep> <activeDirectoryDump.txt>")
+    __version__ = "1.1.1"
+
+    parser = argparse.ArgumentParser(description=f"Crackpot CLI Version {__version__}")
     parser.add_argument('domainUsers')
     parser.add_argument('activeDirectoryDump')
     parser.add_argument('-cH', '--crackedHash', metavar='', help='path to file')
