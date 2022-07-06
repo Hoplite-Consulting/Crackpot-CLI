@@ -12,7 +12,11 @@ def main(args):
     path_CH = args.crackedHash
 
     adDump = utils.activeDirClean(path_ADD)
-    crack = utils.cracked(path_CH)
+    
+    if path_CH:
+        crack = utils.cracked(path_CH)
+    else:
+        crack = []
 
     crackCount = 0
     bar = alive_it(adDump, title="Finding Cracked Passwords...")
@@ -58,10 +62,10 @@ def main(args):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description="./crackpot.py <domainUsers.grep> <activeDirectoryDump.txt> <crackedHash.txt>")
+    parser = argparse.ArgumentParser(description="./crackpot.py <domainUsers.grep> <activeDirectoryDump.txt>")
     parser.add_argument('domainUsers')
     parser.add_argument('activeDirectoryDump')
-    parser.add_argument('crackedHash')
+    parser.add_argument('-cH', '--crackedHash', metavar='', help='path to file')
     parser.add_argument('-w', '--writeFile', metavar='', help='path to file')
     parser.add_argument('-v', '--verbose', action='store_true')
     parser.add_argument('-s', '--slow-mode', action='store_true')
