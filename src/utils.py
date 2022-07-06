@@ -40,3 +40,15 @@ def activeDirClean(path: str) -> list[dict]:
         lines = f.readlines()
     retList = sorted(makeDicts(refine(lines)), key = lambda i: i['user'])
     return retList
+
+def grepClean(path: str) -> list[dict]:
+    with open(path, "r") as f:
+        lines = f.readlines()
+    keys = lines[0].strip().split("\t")
+    users = []
+    for l in lines[1:]:
+        store = {}
+        for var, key in zip(l.strip().split("\t"), keys):
+            store[key] = var
+        users.append(store)
+    return users
