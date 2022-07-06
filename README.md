@@ -16,7 +16,7 @@ pip3 install -r requirements.txt
 ```
 usage: crackpot.py [-h] [-cH] [-w] [-v] [-s] domainUsers activeDirectoryDump
 
-./crackpot.py <domainUsers.grep> <activeDirectoryDump.txt>
+Crackpot CLI Version 1.1.1
 
 positional arguments:
   domainUsers
