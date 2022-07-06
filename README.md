@@ -14,18 +14,18 @@ pip3 install -r requirements.txt
 ```
 
 ```
-usage: crackpot.py [-h] [-w] [-v] [-s] domainUsers activeDirectoryDump crackedHash
+usage: crackpot.py [-h] [-cH] [-w] [-v] [-s] domainUsers activeDirectoryDump
 
-./crackpot.py <domainUsers.grep> <activeDirectoryDump.txt> <crackedHash.txt>
+./crackpot.py <domainUsers.grep> <activeDirectoryDump.txt>
 
 positional arguments:
   domainUsers
   activeDirectoryDump
-  crackedHash
 
 options:
-  -h, --help           show this help message and exit
-  -w , --writeFile     path to file
+  -h, --help            show this help message and exit
+  -cH , --crackedHash   path to file
+  -w , --writeFile      path to file
   -v, --verbose
   -s, --slow-mode
 ```
