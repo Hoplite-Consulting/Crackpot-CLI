@@ -1,6 +1,6 @@
 # Crackpot CLI
 
-Crackpot CLI will take an LDAP Dump domain_users.grep, Active Directory Dump activeDirectoryDump.txt and a Hashcat cracked.txt and combine them into a clean CSV file for reading.
+Crackpot CLI will take an LDAP Dump <domain_users.grep> and an Active Directory Dump <activeDirectoryDump.txt> and combine them into a clean CSV file for reading.
 
 Written by [Oliver Scotten](https://www.github.com/oliv10).
 
