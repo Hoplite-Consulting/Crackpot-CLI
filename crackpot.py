@@ -82,7 +82,7 @@ def main(args):
 
 if __name__ == "__main__":
 
-    __version__ = "1.1.2"
+    __version__ = "1.2.0"
 
     parser = argparse.ArgumentParser(description=f"Crackpot CLI Version {__version__}")
     parser.add_argument('domainUsers')
