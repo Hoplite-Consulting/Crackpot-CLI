@@ -1,6 +1,6 @@
 # Crackpot CLI
 
-Crackpot CLI will take an LDAP Dump <domain_users.grep>, an Active Directory Dump <activeDirectoryDump.txt> and a (optional) HashCat output to combine them into a clean CSV file for reading.
+Crackpot CLI will take an LDAP Dump <domain_users.grep>, an Active Directory Dump <activeDirectoryDump.txt> and a (optional) HashCat output to combine them into a clean CSV file for reading. This will also calculate the score of any cracked passwords using [zxcvbn](https://github.com/dwolfhub/zxcvbn-python).
 
 Written by [Oliver Scotten](https://www.github.com/oliv10).
 
