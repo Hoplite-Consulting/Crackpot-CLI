@@ -36,11 +36,30 @@ def main(args):
 
     data = utils.grepClean(path_DU)
 
+    occur = {}
+
+    # Add User Hash and Password to Data
     for user in data:
         for u in userHashPass:
             if u['user'] == user['sAMAccountName']:
                 user['hash'] = u['hash']
                 user['password'] = u['password']
+                try:
+                    occur[u['hash']] += 1
+                except KeyError:
+                    occur[u['hash']] = 1
+    
+    # Add Password Occurence to Data
+    for user in data:
+        for pw in occur:
+            try:
+                if user['hash'] == pw:
+                    if pw == None:
+                        pass
+                    else:
+                        user['hash occurence'] = occur[pw]
+            except:
+                pass
 
     keys = []
     for user in data:
