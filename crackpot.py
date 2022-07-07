@@ -24,12 +24,12 @@ def main(args):
         for hash in crack:
             if acc["hash"] == hash["hash"]:
                 acc["password"] = hash["password"]
-                if args.verbose:
+                if args.verbose or args.veryverbose:
                     print("Found Password for User:", acc["user"])
                     crackCount += 1
         if args.slow_mode:
             time.sleep(.01)
-    if args.verbose:
+    if args.verbose or args.veryverbose:
         print(crackCount, "passwords found in", path_CH)
     
     userHashPass = adDump
@@ -38,10 +38,16 @@ def main(args):
 
     occur = {}
 
+    bar = alive_it(data, title="Adding User Hashpass to Data")
+
     # Add User Hash and Password to Data
-    for user in data:
+    for user in bar:
         for u in userHashPass:
             if u['user'] == user['sAMAccountName']:
+                if args.veryverbose:
+                    print("Added Hashpass to User:", user['sAMAccountName'])
+                if args.slow_mode:
+                    time.sleep(.01)
                 user['hash'] = u['hash']
                 user['password'] = u['password']
                 try:
@@ -62,10 +68,15 @@ def main(args):
                 pass
 
     keys = []
-    for user in data:
+    bar = alive_it(data, title="Generating Column Titles")
+    for user in bar:
         keyList = list(user.keys())
         for k in keyList:
             if k not in keys:
+                if args.veryverbose:
+                    print("Column Title '"+str(k)+"' Added")
+                if args.slow_mode:
+                    time.sleep(.01)
                 keys.append(k)
     
     if args.writeFile:
@@ -74,7 +85,7 @@ def main(args):
             writer.writeheader()
             bar = alive_it(data, title="Writing to file...")
             for user in bar:
-                if args.verbose:
+                if args.verbose or args.veryverbose:
                     print("Writing User:", user["sAMAccountName"])
                 if args.slow_mode:
                     time.sleep(.01)
@@ -82,7 +93,7 @@ def main(args):
 
 if __name__ == "__main__":
 
-    __version__ = "1.2.0"
+    __version__ = "1.3.0"
 
     parser = argparse.ArgumentParser(description=f"Crackpot CLI Version {__version__}")
     parser.add_argument('domainUsers')
@@ -90,6 +101,7 @@ if __name__ == "__main__":
     parser.add_argument('-cH', '--crackedHash', metavar='', help='path to file')
     parser.add_argument('-w', '--writeFile', metavar='', help='path to file')
     parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-vv', '--veryverbose', action='store_true')
     parser.add_argument('-s', '--slow-mode', action='store_true')
     args = parser.parse_args()
 
