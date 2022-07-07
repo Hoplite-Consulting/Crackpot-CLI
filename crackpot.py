@@ -5,6 +5,7 @@ from csv import DictWriter
 from alive_progress import alive_it
 from src import utils
 import time
+from zxcvbn import zxcvbn
 
 def main(args):
     path_DU = args.domainUsers
@@ -38,7 +39,7 @@ def main(args):
 
     occur = {}
 
-    bar = alive_it(data, title="Adding User Hashpass to Data")
+    bar = alive_it(data, title="Adding User Hashpass to Data...")
 
     # Add User Hash and Password to Data
     for user in bar:
@@ -67,8 +68,23 @@ def main(args):
             except:
                 pass
 
+    bar = alive_it(data, title="Calculating Password Scores...")
+
+    # Add User Password Score to Data
+    for user in bar:
+        try:
+            res = zxcvbn(user['password'], user_inputs=[user['name'].split(" ")])
+            user['password score'] = res['score']
+            user['password feedback'] = res['feedback']
+            if args.veryverbose:
+                print("Calculating Score for User: ", user['sAMAccountName'])
+            if args.slow_mode:
+                time.sleep(.01)
+        except:
+            pass
+
     keys = []
-    bar = alive_it(data, title="Generating Column Titles")
+    bar = alive_it(data, title="Generating Column Titles...")
     for user in bar:
         keyList = list(user.keys())
         for k in keyList:
@@ -93,7 +109,7 @@ def main(args):
 
 if __name__ == "__main__":
 
-    __version__ = "1.3.0"
+    __version__ = "1.4.0"
 
     parser = argparse.ArgumentParser(description=f"Crackpot CLI Version {__version__}")
     parser.add_argument('domainUsers')

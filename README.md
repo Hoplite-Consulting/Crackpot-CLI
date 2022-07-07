@@ -14,9 +14,9 @@ pip3 install -r requirements.txt
 ```
 
 ```
-usage: crackpot.py [-h] [-cH] [-w] [-v] [-s] domainUsers activeDirectoryDump
+usage: crackpot.py [-h] [-cH] [-w] [-v] [-vv] [-s] domainUsers activeDirectoryDump
 
-Crackpot CLI Version 1.3.0
+Crackpot CLI Version 1.4.0
 
 positional arguments:
   domainUsers
@@ -27,6 +27,7 @@ options:
   -cH , --crackedHash   path to file
   -w , --writeFile      path to file
   -v, --verbose
+  -vv, --veryverbose
   -s, --slow-mode
 ```
 
