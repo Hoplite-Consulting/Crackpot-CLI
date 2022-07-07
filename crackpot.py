@@ -55,14 +55,15 @@ def main(args):
             writer.writeheader()
             bar = alive_it(data, title="Writing to file...")
             for user in bar:
-                print("Writing User:", user["sAMAccountName"])
+                if args.verbose:
+                    print("Writing User:", user["sAMAccountName"])
                 if args.slow_mode:
                     time.sleep(.01)
                 writer.writerow(user)
 
 if __name__ == "__main__":
 
-    __version__ = "1.1.1"
+    __version__ = "1.1.2"
 
     parser = argparse.ArgumentParser(description=f"Crackpot CLI Version {__version__}")
     parser.add_argument('domainUsers')
