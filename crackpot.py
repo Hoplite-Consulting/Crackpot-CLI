@@ -109,7 +109,12 @@ def main(args):
 
 if __name__ == "__main__":
 
-    __version__ = "1.4.0"
+    __version__ = "1.4.1"
+
+    with open("src/TITLE", "r") as title:
+        lines = title.readlines()
+    for l in lines:
+        print("\t", l.replace("\n", ""))
 
     parser = argparse.ArgumentParser(description=f"Crackpot CLI Version {__version__}")
     parser.add_argument('domainUsers')

@@ -14,9 +14,17 @@ pip3 install -r requirements.txt
 ```
 
 ```
-usage: crackpot.py [-h] [-cH] [-w] [-v] [-vv] [-s] domainUsers activeDirectoryDump
+	   ______                  _                      
+	  / _____)                | |                _    
+	 | /       ____ ____  ____| |  _ ____   ___ | |_  
+	 | |      / ___) _  |/ ___) | / )  _ \ / _ \|  _) 
+	 | \_____| |  ( ( | ( (___| |< (| | | | |_| | |__ 
+	  \______)_|   \_||_|\____)_| \_) ||_/ \___/ \___)
+	                                |_|               
+usage: crackpot.py [-h] [-cH] [-w] [-v] [-vv] [-s]
+                   domainUsers activeDirectoryDump
 
-Crackpot CLI Version 1.4.0
+Crackpot CLI Version 1.4.1
 
 positional arguments:
   domainUsers
